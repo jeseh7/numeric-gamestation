@@ -11,10 +11,10 @@ function Landing() {
       <p className='landingText2'>
         Pick The Correct <a className='landingBlur'>Ten ⭐</a>
       </p>
-      <a className='playButton'>
+      <a className='playSelection' href='/game'>
         Play
       </a>
-      <a className='loginButton'>
+      <a className='loginSelection' href='/login'>
         Login
       </a>
     </div>

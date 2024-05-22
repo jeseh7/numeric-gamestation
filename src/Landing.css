@@ -37,11 +37,12 @@
     font-family: 'Karma', serif;
 }
 
-.playButton {
+.playSelection {
     position: absolute;
     left: 42%;
     top: 46%;
     z-index: 2; 
+    color: black;
     border: 1px solid #000;
     background-color: white;
     border-radius: 25px;
@@ -52,14 +53,15 @@
     padding-right: 45px;
     transition: .5s;
     font-family: 'Karma', serif;
+    text-decoration: none;
 }
 
-.playButton:hover {
+.playSelection:hover {
     cursor: pointer;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.loginButton {
+.loginSelection {
     position: absolute;
     right: 42%;
     top: 51%;
@@ -74,9 +76,10 @@
     padding-right: 45px;
     transition: .5s;
     font-family: 'Karma', serif;
+    text-decoration: none;
 }
 
-.loginButton:hover {
+.loginSelection:hover {
     cursor: pointer;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -90,23 +93,23 @@
 
 /* Styles for screens up to 1280x800 */
 @media (max-width: 1280px) and (max-height: 800px) {
-    .loginButton {
+    .loginSelection {
         right: 39%;
         top: 53%;
     }
-    .playButton {
+    .playSelection {
         left: 39%;
     }
 }
 
 /* Styles for screens up to 430x932 (e.g., smaller smartphones) */
 @media (max-width: 430px) and (max-height: 932px) {
-    .loginButton {
+    .loginSelection {
         right: 24%;
         top: 53%;  
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     }
-    .playButton {
+    .playSelection {
         left: 24%;
         top: 46%;  
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -130,12 +133,12 @@
 
 /* Styles for screens up to 375x812 (e.g., iPhone X) */
 @media (max-width: 375px) and (max-height: 812px) {
-    .loginButton {
+    .loginSelection {
         right: 24%;
         top: 55%;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     }
-    .playButton {
+    .playSelection {
         left: 24%;
         top: 47%;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);

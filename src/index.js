@@ -1,17 +1,55 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Landing from './Landing';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Login } from './pages/loginPage';
+import Game from './pages/game';
+import { onAuthStateChanged } from 'firebase/auth';
+import { ProtectedRoute } from './components/protectedRoute';
+import { auth } from './firebase';
+
+const App = () => {
+  const [user, setUser] = useState(null);
+  const [isFetching, setIsFetching] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+        setIsFetching(false);
+      } else {
+        setUser(null);
+        setIsFetching(false);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  if (isFetching) {
+    return <h2>Loading...</h2>
+  }
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing user={user} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/game" element={<ProtectedRoute user={user}><Game /></ProtectedRoute>} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Landing />
+    <App />
   </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
+// to log results (for example: reportWebVitals.console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
