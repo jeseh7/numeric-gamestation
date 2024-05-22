@@ -1,0 +1,14 @@
+.App {
+    text-align: center;
+  }
+  
+  .digit {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin: 5px;
+    border: 1px solid #000;
+    text-align: center;
+  }
+  
