@@ -1,59 +1,77 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Corrected import statement
-import './loginCSS.css';
+import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import { supabase } from "../supabase"; // Import your Supabase instance
+import './loginCSS.css';
 
 export const Login = ({ user }) => {
-    const navigate = useNavigate(); // Initialize navigate
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
     const [isSignUpActive, setIsSignUpActive] = useState(true);
+
     const handleMethodChange = () => {
         setIsSignUpActive(!isSignUpActive);
     }
 
-    const handleSignUp = () => {
-        if (!email || !password) return;
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            console.log(user);
-            navigate('/game'); // Redirect to /game after sign up
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
-        });
+    const handleSignUp = async () => {
+        if (!email || !password || !username) return;
+
+        try {
+            const { user: firebaseUser, error } = await createUserWithEmailAndPassword(auth, email, password);
+
+            if (error) {
+                throw error;
+            }
+
+            // Store username in Supabase
+            const { data, error: profileError } = await supabase
+                .from('user_profiles')
+                .insert([{ email, username, firebase_uid: firebaseUser.uid }]);
+            
+            if (profileError) {
+                throw profileError;
+            }
+
+            console.log("User signed up successfully:", firebaseUser);
+            navigate('/game');
+        } catch (error) {
+            console.error("Error signing up:", error.message);
+        }
     }
 
-    const handleSignIn = () => {
+    const handleSignIn = async () => {
         if (!email || !password) return;
-        signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            console.log(user);
-            navigate('/game'); // Redirect to /game after sign in
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
-        });
+
+        try {
+            const { user: firebaseUser, error } = await signInWithEmailAndPassword(auth, email, password);
+
+            if (error) {
+                throw error;
+            }
+
+            console.log("User signed in successfully:", firebaseUser);
+            navigate('/game');
+        } catch (error) {
+            console.error("Error signing in:", error.message);
+        }
     }
 
     const handleEmailChange = (event) => setEmail(event.target.value);
     const handlePasswordChange = (event) => setPassword(event.target.value);
+    const handleUsernameChange = (event) => setUsername(event.target.value);
 
     if (user) {
-        return null; // No need to render anything here
+        return null;
     }
 
     return (
         <section>
             <form className="loginPage">
                 <fieldset className="fieldset">
+                    {!isSignUpActive && <input className="input" type="text" id="username" placeholder="Username" onChange={handleUsernameChange} />}
                     <input className="input" type="text" id="email" placeholder="Email" onChange={handleEmailChange} />
                     <input className="input" type="password" id="password" placeholder="Password" onChange={handlePasswordChange} />
                     {!isSignUpActive && <button type="button" className="loginPageButton" onClick={handleSignUp}>Sign Up</button>}

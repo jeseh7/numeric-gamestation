@@ -31,14 +31,14 @@
   
   .loginPage::before {
     left: 40%;
-    bottom: -130%;
+    bottom: -110%;
     background-color: #d9a97850;
     animation: waves 6s infinite linear;
   }
   
   .loginPage::after {
     left: 35%;
-    bottom: -125%;
+    bottom: -105%;
     background-color: #d9a97850;
     animation: waves 7s infinite;
   }
@@ -86,7 +86,7 @@
   
   .switchButton {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgb(255, 255, 255);
     position: absolute;
     right: 10px;
     bottom: 10px;
@@ -99,7 +99,7 @@
     display: block;
     border-radius: 5px;
     font-size: 16px;
-    background: white;
+    background: rgba(255, 255, 255, 0.452);
     width: 100%;
     border: 0;
     padding: 10px 10px;

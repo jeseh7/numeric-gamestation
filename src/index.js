@@ -9,12 +9,17 @@ import Game from './pages/game';
 import { onAuthStateChanged } from 'firebase/auth';
 import { ProtectedRoute } from './components/protectedRoute';
 import { auth } from './firebase';
+import { createTable } from './initializeDatabase'; // Import the createTable function
+import Leaderboard from './pages/leaderboard';
 
 const App = () => {
   const [user, setUser] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
+    // Call the createTable function when the component mounts
+    createTable();
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
@@ -36,6 +41,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/game" element={<ProtectedRoute user={user}><Game /></ProtectedRoute>} />
       </Routes>
     </BrowserRouter>
