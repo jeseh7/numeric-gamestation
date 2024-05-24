@@ -60,6 +60,29 @@
     cursor: pointer;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
+.leaderboardSelection {
+    position: absolute;
+    left: 40%;
+    top: 58%;
+    z-index: 2; 
+    color: black;
+    border: 1px solid #000;
+    background-color: white;
+    border-radius: 25px;
+    font-size: 24px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 45px;
+    padding-right: 45px;
+    transition: .5s;
+    font-family: 'Karma', serif;
+    text-decoration: none;
+}
+
+.leaderboardSelection:hover {
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 .loginSelection {
     position: absolute;

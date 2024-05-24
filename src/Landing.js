@@ -17,6 +17,9 @@ function Landing() {
       <a className='loginSelection' href='/login'>
         Login
       </a>
+      <a className='leaderboardSelection' href='/leaderboard'>
+        Leaderboard
+      </a>
     </div>
   );
 }
