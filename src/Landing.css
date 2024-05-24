@@ -100,6 +100,7 @@
     transition: .5s;
     font-family: 'Karma', serif;
     text-decoration: none;
+    color: black;
 }
 
 .loginSelection:hover {

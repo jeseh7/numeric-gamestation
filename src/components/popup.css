@@ -1,0 +1,113 @@
+.loginPage2 {
+    overflow: hidden;
+    background-color: white;
+    padding: 40px 30px 30px 30px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    transform: translate(-50%, -50%);
+    transition: transform 300ms, box-shadow 300ms;
+    box-shadow: 5px 10px 10px var(--green-seaweed, 0.2);
+  }
+  
+  .loginPage2::before,
+  .loginPage2::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-top-left-radius: 40%;
+    border-top-right-radius: 45%;
+    border-bottom-left-radius: 35%;
+    border-bottom-right-radius: 40%;
+    z-index: -1;
+  }
+  
+  .loginPage2::before {
+    left: 50%;
+    bottom: -110%;
+    background-color: #90e6d350;
+    animation: waves 4s infinite linear;
+  }
+  
+  .loginPage2::after {
+    left: 27%;
+    bottom: -105%;
+    background-color: #90e6d350;
+    animation: waves 8s infinite;
+  }
+  
+  .loginPage2 > input2 {
+    font-family: var(--font-asap);
+    display: block;
+    border-radius: 5px;
+    font-size: 16px;
+    background: white;
+    width: 100%;
+    border: 0;
+    padding: 10px 10px;
+    margin: 15px -10px;
+  }
+  
+  .loginPage2 > .loginPageButton2 {
+    font-family: var(--font-asap);
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    width: 80px;
+    border: 0;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-left: -5px;
+    border-radius: 5px;
+    background-color: var(--red-fire);
+    transition: background-color 300ms;
+  }
+  
+  .loginPage2 > .loginPageButton2:hover {
+    background-color: rgb(204, 80, 81);
+  }
+  
+  @keyframes waves {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .input2 {
+    font-family: 'Asap', sans-serif;
+    display: block;
+    border-radius: 5px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.452);
+    width: 100%;
+    border: 0;
+    padding: 10px 10px;
+    margin: 15px -10px;
+}
+.loginPageButton2 {
+    font-family: 'Asap', sans-serif;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 18px;
+    width: 80px;
+    border: 0;
+    padding: 10px 10px;
+    margin-top: 10px;
+    margin-left: 40%;
+    border-radius: 5px;
+    background-color: #FFE0AC;
+    transition: background-color 300ms;
+    text-decoration: none;
+    opacity: 80%;
+    background-color: #83d1c0;
+}
+
+.fieldset2 {
+    border: none;
+}
