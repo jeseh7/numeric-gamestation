@@ -62,6 +62,9 @@ const Leaderboard = () => {
                     </li>
                 ))}
             </ul>
+            <div className="home-button-container">
+                <a className='gameButton2' href='/'>Home</a>
+            </div>
         </div>
     );
 };

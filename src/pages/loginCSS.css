@@ -1,47 +1,131 @@
-/* Colors */
+.loginPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 30px 30px 30px;
+  border-radius: 10px;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 300ms, box-shadow 300ms;
+  box-shadow: 5px 10px 10px rgb(152, 152, 152);
+  width: 90%; /* Adjust width */
+  max-width: 400px; /* Add max-width */
+  overflow: hidden;
+}
 
-  
-  
+.loginPage::before,
+.loginPage::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-top-left-radius: 40%;
+  border-top-right-radius: 45%;
+  border-bottom-left-radius: 35%;
+  border-bottom-right-radius: 40%;
+  z-index: -1;
+}
+
+.loginPage::before {
+  left: 40%;
+  bottom: -110%;
+  background-color: #d9a97850;
+  animation: waves 6s infinite linear;
+}
+
+.loginPage::after {
+  left: 35%;
+  bottom: -105%;
+  background-color: #d9a97850;
+  animation: waves 7s infinite;
+}
+
+.input {
+  font-family: 'Asap', sans-serif;
+  display: block;
+  border-radius: 5px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.452);
+  width: 100%;
+  border: 0;
+  padding: 10px 10px;
+  margin: 15px -10px;
+}
+
+.loginPageButton {
+  font-family: 'Asap', sans-serif;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 16px;
+  width: 100%; /* Adjust width */
+  border: 0;
+  padding: 10px 0;
+  margin-top: 10px;
+  margin-left: -5px;
+  border-radius: 5px;
+  background-color: #FFE0AC;
+  transition: background-color 300ms;
+}
+
+@media (min-width: 768px) {
   .loginPage {
-    overflow: hidden;
-    background-color: white;
-    padding: 40px 30px 30px 30px;
-    border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    transform: translate(-50%, -50%);
-    transition: transform 300ms, box-shadow 300ms;
-    box-shadow: 5px 10px 10px var(--green-seaweed, 0.2);
+      width: 400px; /* Adjust width for larger screens */
   }
-  
-  .loginPage::before,
-  .loginPage::after {
-    content: '';
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-top-left-radius: 40%;
-    border-top-right-radius: 45%;
-    border-bottom-left-radius: 35%;
-    border-bottom-right-radius: 40%;
-    z-index: -1;
+}
+
+@media (max-width: 480px) {
+  .loginPage {
+      padding: 20px; /* Adjust padding for smaller screens */
   }
-  
-  .loginPage::before {
-    left: 40%;
-    bottom: -110%;
-    background-color: #d9a97850;
-    animation: waves 6s infinite linear;
-  }
-  
-  .loginPage::after {
-    left: 35%;
-    bottom: -105%;
-    background-color: #d9a97850;
-    animation: waves 7s infinite;
-  }
+  .loginPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 30px 30px 30px;
+  border-radius: 10px;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 300ms, box-shadow 300ms;
+  box-shadow: 5px 10px 10px rgb(152, 152, 152);
+  width: 90%; /* Adjust width */
+  max-width: 400px; /* Add max-width */
+  overflow: hidden;
+}
+
+.loginPage::before,
+.loginPage::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-top-left-radius: 40%;
+  border-top-right-radius: 45%;
+  border-bottom-left-radius: 35%;
+  border-bottom-right-radius: 40%;
+  z-index: -1;
+}
+
+.loginPage::before {
+  left: 40%;
+  bottom: -110%;
+  background-color: #d9a97850;
+  animation: waves 6s infinite linear;
+}
+
+.loginPage::after {
+  left: 35%;
+  bottom: -105%;
+  background-color: #d9a97850;
+  animation: waves 7s infinite;
+}
+}
+
   
   .loginPage > input {
     font-family: var(--font-asap);
@@ -94,32 +178,6 @@
     cursor: pointer;
   }
   
-  .input {
-    font-family: 'Asap', sans-serif;
-    display: block;
-    border-radius: 5px;
-    font-size: 16px;
-    background: rgba(255, 255, 255, 0.452);
-    width: 100%;
-    border: 0;
-    padding: 10px 10px;
-    margin: 15px -10px;
-}
-
-.loginPageButton {
-    font-family: 'Asap', sans-serif;
-    cursor: pointer;
-    color: #ffffff;
-    font-size: 16px;
-    width: 80px;
-    border: 0;
-    padding: 10px 0;
-    margin-top: 10px;
-    margin-left: -5px;
-    border-radius: 5px;
-    background-color: #FFE0AC;
-    transition: background-color 300ms;
-}
 
 .loginPageButton:hover {
     background-color: #d9a978; /* Darken redFire color */
@@ -127,4 +185,48 @@
 
 .fieldset {
     border: none;
+}
+
+/* Custom Alert Box Styles */
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* To place the close button at the end */
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert-info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+/* Close Button */
+.close-btn {
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.5;
+  margin-left: 10px;
+}
+
+.close-btn:hover {
+  color: #000;
+  opacity: 0.75;
 }

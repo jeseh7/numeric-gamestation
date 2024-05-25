@@ -9,7 +9,7 @@
     width: 400px;
     transform: translate(-50%, -50%);
     transition: transform 300ms, box-shadow 300ms;
-    box-shadow: 5px 10px 10px var(--green-seaweed, 0.2);
+    box-shadow: 5px 10px 10px rgb(152, 152, 152);
   }
   
   .loginPage2::before,

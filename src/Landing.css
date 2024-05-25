@@ -1,197 +1,120 @@
 .landingBody {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     position: relative;
 }
 
-#numeric {
-    max-width: 100%;
-    height: auto;
-    position: absolute;
-    top: 25%;
-    transform: translateY(-50%);
-    z-index: 1; 
+.App-video {
+    height: 100px;  /* Adjust the height as needed */
+    width: auto;
+    margin-bottom: 20px;
+    z-index: 1;
+    border-radius: 10px; /* Optional: adds rounded corners to the video */
+}
+
+.landingText1,
+.landingText2 {
+    z-index: 2; 
+    color: #000; 
+    padding: 0px;
+    font-size: 24px;
+    font-family: 'Karma', serif;
+    text-align: center;
 }
 
 .landingText1 {
-    position: absolute;
-    z-index: 2; 
-    color: #000; 
-    padding: 10px;
-    left: 33%;
-    top: 33%;
-    font-size: 24px;
-    font-family: 'Karma', serif;
+    margin-bottom: 0px;
 }
 
 .landingText2 {
-    position: absolute;
-    z-index: 2; 
-    color: #000; 
-    padding: 10px; 
-    left: 47%;
-    top: 36%;
-    font-size: 24px;
-    font-family: 'Karma', serif;
+    margin-top: 0px;
+    margin-bottom: 20px;
 }
 
-.playSelection {
-    position: absolute;
-    left: 42%;
-    top: 46%;
-    z-index: 2; 
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+.playSelection,
+.leaderboardSelection,
+.loginSelection,
+.signOutButton {
     color: black;
     border: 1px solid #000;
     background-color: white;
     border-radius: 25px;
     font-size: 24px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 45px;
-    padding-right: 45px;
-    transition: .5s;
+    padding: 10px 45px;
+    margin: 10px 0;
+    transition: 0.5s;
     font-family: 'Karma', serif;
     text-decoration: none;
+    text-align: center;
 }
 
-.playSelection:hover {
+.playSelection:hover,
+.leaderboardSelection:hover,
+.loginSelection:hover, 
+.signOutButton:hover {
     cursor: pointer;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
-.leaderboardSelection {
-    position: absolute;
-    left: 40%;
-    top: 58%;
-    z-index: 2; 
-    color: black;
-    border: 1px solid #000;
-    background-color: white;
-    border-radius: 25px;
-    font-size: 24px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 45px;
-    padding-right: 45px;
-    transition: .5s;
-    font-family: 'Karma', serif;
-    text-decoration: none;
-}
-
-.leaderboardSelection:hover {
-    cursor: pointer;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.loginSelection {
-    position: absolute;
-    right: 42%;
-    top: 51%;
-    z-index: 2; 
-    border: 1px solid #FAFF00;
-    background-color: white;
-    border-radius: 25px;
-    font-size: 24px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 45px;
-    padding-right: 45px;
-    transition: .5s;
-    font-family: 'Karma', serif;
-    text-decoration: none;
-    color: black;
-}
-
-.loginSelection:hover {
-    cursor: pointer;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.landingBlur {
-    color: transparent; 
-    text-shadow: 0 0 3px rgba(0,0,0,1);
-}
-
-/* =================================================================Screen Sizes==================================================================================== */
 
 /* Styles for screens up to 1280x800 */
 @media (max-width: 1280px) and (max-height: 800px) {
+    .App-video {
+        height: 80px;
+    }
+    .playSelection,
+    .leaderboardSelection,
     .loginSelection {
-        right: 39%;
-        top: 53%;
-    }
-    .playSelection {
-        left: 39%;
-    }
-    .leaderboardSelection {
-        top: 63%;
-        left: 38%;
+        font-size: 22px;
+        padding: 8px 40px;
     }
 }
 
 /* Styles for screens up to 430x932 (e.g., smaller smartphones) */
 @media (max-width: 430px) and (max-height: 932px) {
+    .App-video {
+        height: 60px;
+    }
+    .playSelection,
+    .leaderboardSelection,
     .loginSelection {
-        right: 24%;
-        top: 53%;  
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        font-size: 20px;
+        padding: 6px 35px;
     }
-    .leaderboardSelection {
-        top: 61%;
-        left: 20%;
-    }
-    .playSelection {
-        left: 24%;
-        top: 46%;  
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    .landingText1 {
-        font-size: 22px;
-        left: 18%;
-        top: 33%;  
+    .landingText1,
+    .landingText2 {
+        font-size: 20px;
     }
     #numeric {
-        height: auto;
-        width: 400px;
-        top: 25%;  
-    }
-    .landingText2 {
-        font-size: 22px;
-        left: 18%;
-        top: 36%;  
+        width: 300px;
     }
 }
 
 /* Styles for screens up to 375x812 (e.g., iPhone X) */
 @media (max-width: 375px) and (max-height: 812px) {
+    .App-video {
+        height: 50px;
+    }
+    .playSelection,
+    .leaderboardSelection,
     .loginSelection {
-        right: 24%;
-        top: 55%;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        font-size: 18px;
+        padding: 5px 30px;
     }
-    .leaderboardSelection {
-        top: 64%;
-        left: 22%;
-    }
-    .playSelection {
-        left: 24%;
-        top: 47%;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    .landingText1 {
-        font-size: 22px;
-        left: 18%;
-        top: 33%;  
+    .landingText1,
+    .landingText2 {
+        font-size: 18px;
     }
     #numeric {
-        height: auto;
-        width: 400px;
-        top: 25%;  
-    }
-    .landingText2 {
-        font-size: 22px;
-        left: 18%;
-        top: 36%; 
+        width: 280px;
     }
 }

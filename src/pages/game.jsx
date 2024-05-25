@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { signOut } from 'firebase/auth';
+import React, { useState, useEffect, useRef } from 'react';
 import { auth } from '../firebase';
 import { supabase } from '../supabase';
 import './game.css'; // Import the CSS file
@@ -21,6 +20,8 @@ const Game = () => {
   const [bestAttempt, setBestAttempt] = useState(null);
   const [isGameComplete, setIsGameComplete] = useState(false);
   const [username, setUsername] = useState('');
+
+  const inputRef = useRef(null); // Create a ref for the input element
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -48,21 +49,18 @@ const Game = () => {
       }
     };
     fetchUserData();
+
+    // Focus on the input field when the component mounts
+    inputRef.current.focus();
   }, []);
 
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => console.log("Sign Out"))
-      .catch((error) => console.log(error));
-  };
-
   const handleInputChange = (e) => {
-    setGuess(e.target.value);
+    const value = e.target.value.replace(/\D/, ''); // Replace non-digit characters with an empty string
+    setGuess(value);
   };
 
   const submitGuess = () => {
     if (guess.length !== 10) {
-      alert('Please enter a 10-digit number.');
       return;
     }
 
@@ -88,6 +86,18 @@ const Game = () => {
     }
 
     setGuess('');
+  };
+
+  const handleReplay = () => {
+    setDailyNumber(generateDailyNumber());
+    setCurrentGuess(new Array(10).fill('_'));
+    setGuess('');
+    setAttempts(0);
+    setFeedback('');
+    setIsGameComplete(false);
+
+    // Focus on the input field when the game restarts
+    inputRef.current.focus();
   };
 
   const updateBestAttempt = async (currentAttempts) => {
@@ -121,24 +131,32 @@ const Game = () => {
     }
   };
 
-  const handleReplay = () => {
-    setDailyNumber(generateDailyNumber());
-    setCurrentGuess(new Array(10).fill('_'));
-    setGuess('');
-    setAttempts(0);
-    setFeedback('');
-    setIsGameComplete(false);
-  };
+  // Add event listener to listen for Enter key press
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === 'Enter') {
+        submitGuess();
+      }
+    };
+
+    document.addEventListener('keypress', handleKeyPress);
+
+    // Remove the event listener
+    return () => {
+      document.removeEventListener('keypress', handleKeyPress);
+    };
+  }, []);
 
   return (
     <section className='gameSection'>
-      <h2 className='gameTitle'>GAME</h2>
+      <h2 className='gameTitle'>NUMERICAL GAME</h2>
       <div id="game-board">
         {currentGuess.map((digit, index) => (
           <span key={index} className="digit">{digit}</span>
         ))}
       </div>
       <input
+        ref={inputRef}
         className='gameInput'
         type="text"
         value={guess}
@@ -146,15 +164,17 @@ const Game = () => {
         maxLength="10"
         placeholder="Enter your guess"
         disabled={isGameComplete} // Disable input when the game is complete
+        pattern="[0-9]*" // Allow only numeric input
       />
       <button className='gameButton' onClick={submitGuess} disabled={isGameComplete}>Submit Guess</button>
       {isGameComplete && <button className='gameButton' onClick={handleReplay}>Replay</button>}
       <p id="feedback">{feedback}</p>
       <p id="attempts">Attempts: {attempts}</p>
       {bestAttempt !== null && <p className="best-attempt">Best Attempt: {bestAttempt}</p>}
-      <button className='gameButton' onClick={handleSignOut}>Sign Out</button>
+      <a className='gameButton' href='/'>Home</a>
     </section>
   );
 };
 
 export default Game;
+
