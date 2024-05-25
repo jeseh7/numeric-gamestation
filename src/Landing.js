@@ -3,6 +3,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from './firebase';
 import './Landing.css';
 import numerical from './img/numerical_landingvid.mp4';
+import numericalWebm from './img/numerical_landingvid.webm';
 
 const handleSignOut = () => {
   signOut(auth)
@@ -20,6 +21,7 @@ function Landing() {
     <div className='landingBody'>
       <video className="App-video" id='numeric' autoPlay loop muted>
         <source src={numerical} type="video/mp4" />
+        <source src="./img/numerical_landingvid.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
       <p className='landingText1'>
