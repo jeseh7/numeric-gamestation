@@ -19,9 +19,9 @@ function Landing() {
 
   return (
     <div className='landingBody'>
-      <video className="App-video" id='numeric' autoPlay loop muted>
+      <video className="App-video" id='numeric' autoPlay loop muted playsInline>
         <source src={numerical} type="video/mp4" />
-        <source src="./img/numerical_landingvid.webm" type="video/webm" />
+        <source src={numericalWebm} type="video/webm" />
         Your browser does not support the video tag.
       </video>
       <p className='landingText1'>
