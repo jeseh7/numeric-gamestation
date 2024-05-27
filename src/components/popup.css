@@ -28,14 +28,14 @@
   .loginPage2::before {
     left: 50%;
     bottom: -110%;
-    background-color: #90e6d350;
+    background-color: #6e6e6e50;
     animation: waves 4s infinite linear;
   }
   
   .loginPage2::after {
     left: 27%;
     bottom: -105%;
-    background-color: #90e6d350;
+    background-color: #6e6e6e50;
     animation: waves 8s infinite;
   }
   
@@ -105,7 +105,10 @@
     transition: background-color 300ms;
     text-decoration: none;
     opacity: 80%;
-    background-color: #83d1c0;
+    background-color: #6e6e6e50;
+}
+.loginPageButton2:hover {
+  background-color: #6e6e6eb1;
 }
 
 .fieldset2 {

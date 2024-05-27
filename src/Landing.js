@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { signOut } from 'firebase/auth';
 import { auth } from './firebase';
 import './Landing.css';
@@ -17,9 +17,17 @@ const handleSignOut = () => {
 function Landing() {
   const currentUser = auth.currentUser;
 
+  useEffect(() => {
+    const video = document.getElementById('numeric');
+    if (video) {
+      video.muted = true;
+      video.play().catch(error => console.log('Autoplay was prevented:', error));
+    }
+  }, []);
+
   return (
     <div className='landingBody'>
-      <video className="App-video" id='numeric' autoPlay loop muted playsInline>
+      <video className="App-video" id='numeric' muted playsInline autoPlay loop>
         <source src={numerical} type="video/mp4" />
         <source src={numericalWebm} type="video/webm" />
         Your browser does not support the video tag.

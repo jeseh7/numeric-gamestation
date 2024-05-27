@@ -32,14 +32,14 @@
 .loginPage::before {
   left: 40%;
   bottom: -110%;
-  background-color: #d9a97850;
+  background-color: #d8d8d850;
   animation: waves 6s infinite linear;
 }
 
 .loginPage::after {
   left: 35%;
   bottom: -105%;
-  background-color: #d9a97850;
+  background-color: #d8d8d850;
   animation: waves 7s infinite;
 }
 
@@ -66,7 +66,7 @@
   margin-top: 10px;
   margin-left: -5px;
   border-radius: 5px;
-  background-color: #FFE0AC;
+  background-color: #d8d8d897;
   transition: background-color 300ms;
 }
 
@@ -170,7 +170,7 @@
   
   .switchButton {
     text-decoration: none;
-    color: rgb(255, 255, 255);
+    color: rgba(0, 0, 0, 0.483);
     position: absolute;
     right: 10px;
     bottom: 10px;
@@ -180,7 +180,7 @@
   
 
 .loginPageButton:hover {
-    background-color: #d9a978; /* Darken redFire color */
+    background-color: #d8d8d850; /* Darken redFire color */
 }
 
 .fieldset {

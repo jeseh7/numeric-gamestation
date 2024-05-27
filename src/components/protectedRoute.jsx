@@ -14,7 +14,7 @@ export const ProtectedRoute = ({ children, user }) => {
     <section>
             <form className="loginPage2">
                 <fieldset className="fieldset2">
-                     <p className="input2" >😡 Please login to an account to be able to play 💙</p>
+                     <p className="input2" >Please login to an account to be able to play</p>
                      <a href="/login" type="button" className="loginPageButton2" >Log In</a>
                 </fieldset>
             </form>
