@@ -48,7 +48,7 @@
     color: black;
     border: 1px solid #000;
     background-color: white;
-    border-radius: 25px;
+    border-radius: 10px;
     font-size: 24px;
     padding: 10px 45px;
     margin: 10px 0;
@@ -73,7 +73,8 @@
     }
     .playSelection,
     .leaderboardSelection,
-    .loginSelection {
+    .loginSelection, 
+    .signOutButton{
         font-size: 22px;
         padding: 8px 40px;
     }
@@ -86,7 +87,8 @@
     }
     .playSelection,
     .leaderboardSelection,
-    .loginSelection {
+    .loginSelection, 
+    .signOutButton {
         font-size: 20px;
         padding: 6px 35px;
     }
@@ -106,7 +108,8 @@
     }
     .playSelection,
     .leaderboardSelection,
-    .loginSelection {
+    .loginSelection, 
+    .signOutButton {
         font-size: 18px;
         padding: 5px 30px;
     }

@@ -34,7 +34,7 @@ export const Login = ({ user }) => {
       }
 
       console.log('User signed up successfully:', firebaseUser);
-      navigate('/game');
+      navigate('/gamemodes');
     } catch (error) {
       showAlert('Error signing up: ' + error.message, 'danger');
       console.error('Error signing up:', error.message);
@@ -48,7 +48,7 @@ export const Login = ({ user }) => {
       const { user: firebaseUser } = await signInWithEmailAndPassword(auth, email, password);
 
       console.log('User signed in successfully:', firebaseUser);
-      navigate('/game');
+      navigate('/gamemodes');
     } catch (error) {
       showAlert('Password Incorrect or No Account', 'danger');
       console.error('Error signing in:', error.message);

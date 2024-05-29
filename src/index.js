@@ -11,6 +11,9 @@ import { ProtectedRoute } from './components/protectedRoute';
 import { auth } from './firebase';
 import { createTable } from './initializeDatabase'; // Import the createTable function
 import Leaderboard from './pages/leaderboard';
+import loadingGif from './img/loading.gif';
+import Gamemodes from './pages/gamemodes';
+import Hardgame from './pages/hardgame';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -33,7 +36,11 @@ const App = () => {
   }, []);
 
   if (isFetching) {
-    return <h2>Loading...</h2>
+    return (
+      <div className="loading-container">
+        <img src={loadingGif} alt="Loading..." className="loading-gif" />
+      </div>
+    );
   }
 
   return (
@@ -43,10 +50,13 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/game" element={<ProtectedRoute user={user}><Game /></ProtectedRoute>} />
+        <Route path="/hardgame" element={<ProtectedRoute user={user}><Hardgame /></ProtectedRoute>} />
+        <Route path="/gamemodes" element={<ProtectedRoute user={user}><Gamemodes /></ProtectedRoute>} />
       </Routes>
     </BrowserRouter>
   );
 };
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

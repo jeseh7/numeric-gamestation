@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# Project Title: Numerical Game App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# https://numeric-gamestation.vercel.app/
 
-## Available Scripts
+Welcome to the Numerical Game App! This project offers an exciting and challenging gaming experience with two distinct game modes: Normal and Hard. Test your numerical skills, memory, and strategy as you aim to guess the randomly generated 10-digit numbers. Track your progress, compete for the best score on the leaderboards, and enjoy the thrill of mastering each mode.
 
-In the project directory, you can run:
+### Features:
 
-### `npm start`
+1. **Two Game Modes:**
+   - **Normal Mode**: Guess the 10-digit number with feedback on correct digits in their correct positions.
+   - **Hard Mode**: Adds an extra challenge with correct digits briefly revealed before resetting.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Firebase Authentication:**
+   - Securely authenticate users with Firebase authentication, allowing for personalized experiences and user data management.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Leaderboards:**
+   - Track and compare your performance with others on the leaderboards for both Normal and Hard modes.
+   - Compete for the best attempt score and strive to improve your ranking.
 
-### `npm test`
+### Technologies Used:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React**: Utilized for building the user interface and managing component-based architecture.
+- **Firebase Authentication**: Handles user authentication securely, ensuring a seamless login/signup experience.
+- **Supabase**: Manages the leaderboard data, storing user attempts and best scores for both game modes.
+- **CSS**: Custom styling to enhance the visual appeal and user experience of the app.
 
-### `npm run build`
+### How to Use:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Authentication:**
+   - Sign up or log in using Firebase authentication to access the game modes and leaderboards.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Game Modes:**
+   - Choose between Normal or Hard mode to start playing.
+   - In Normal mode, aim to guess the 10-digit number with feedback on correct digits.
+   - In Hard mode, challenge yourself with briefly revealed correct digits and test your memory.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Leaderboards:**
+   - View the leaderboards to see the best attempt scores for both game modes.
+   - Track your progress and compete with other players to climb the ranks.
 
-### `npm run eject`
+4. **Replay and Improve:**
+   - Replay the game modes to improve your skills and achieve better scores.
+   - Challenge yourself to beat your own best attempts and climb higher on the leaderboards.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Getting Started:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Clone the Repository:**
+    - git clone https://github.com/your-username/numerical-game-app.git
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. **Install Dependencies:**
+    - cd numerical-game-app
+    - npm install
+    
+3. **Set Up Firebase:**
+- Create a Firebase project and configure authentication.
+- Replace Firebase credentials in the project files with your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Set Up Supabase:**
+- Create a Supabase project and set up the database for leaderboard data.
+- Replace Supabase credentials in the project files with your own.
 
-## Learn More
+5. **Run the Application:**
+    -npm start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+6. **Access the App:**
+- Open your browser and navigate to http://localhost:3000 to access the Numerical Game App.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Contributing:
 
-### Code Splitting
+Contributions to the Numerical Game App are welcome! Feel free to submit bug fixes, feature enhancements, or suggestions via pull requests. Make sure to follow the project's coding conventions and guidelines.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### License:
 
-### Analyzing the Bundle Size
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Author:
 
-### Making a Progressive Web App
+[Your Name]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Contact:
 
-### Advanced Configuration
+For inquiries or support, please contact [your email address].
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Enjoy playing the Numerical Game App! Let's see who can achieve the best scores on the leaderboards! 🎮🏆

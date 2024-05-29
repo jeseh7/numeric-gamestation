@@ -1,0 +1,62 @@
+/* Add the necessary CSS for the Paginator component */
+
+.page-changer-container, .page-selector-container {
+    cursor: pointer;
+  }
+  
+  .page-changer-container {
+    display: inline-block;
+    svg {
+      position: relative;
+      top: 6px;
+      fill: #000000;
+    }
+  }
+  .page-changer-container:hover {
+    display: inline-block;
+    svg {
+      position: relative;
+      top: 6px;
+      fill: #727272;
+    }
+  }
+  
+  .page-selector-container {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+    border: 1px solid #000000;
+    border-radius: 30%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+  }
+  
+  .page-selector-container:hover {
+    background-color: rgba(192, 192, 192, 0.5);
+  }
+  
+  .selected {
+    background-color: #ffffff;
+    color: black;
+  }
+  
+  .minimized {
+    width: 0;
+    height: 0;
+    color: rgba(243, 129, 129, 0);
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .paginator-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  

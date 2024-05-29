@@ -1,0 +1,98 @@
+.gameSection2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center content vertically */
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+  }
+  
+  .gameTitle2 {
+    font-size: 2em;
+    color: #791313;
+    margin-bottom: 20px;
+  }
+  
+  #game-board2 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow items to wrap to next line */
+    max-width: 380px; /* Adjust max-width as needed */
+    margin-bottom: 20px;
+  }
+  
+  .digit2 {
+    font-size: 2em;
+    margin: 5px;
+    color: #333;
+    border: 2px solid #333;
+    border-radius: 5px;
+    padding: 5px;
+    width: 35px;
+    text-align: center;
+  }
+  
+  .gameInput2[type="text"] {
+    font-size: 1.2em;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .gameInput2[type="text"]:focus {
+    outline: none;
+    border-color: #333; /* Ensure the border color stays the same */
+  }
+  
+  .gameButton2 {
+    font-size: 1em;
+    padding: 10px 20px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    transition: 0.5s;
+  }
+  .gameButton2:hover {
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  #feedback, #attempts, .best-attempt {
+    font-size: 1.2em;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .best-attempt2 {
+    color: #7b7b7b;
+  }
+  .correct {
+    animation: fadeOut 3s forwards;
+  }
+  
+  @keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  @media screen and (max-width: 480px) {
+    #game-board2 {
+      max-width: 220px; /* Adjust max-width for smaller screens */
+    }
+  }
+  
+  @media screen and (min-width: 481px) {
+    #game-board2 {
+      max-width: 100%; /* Adjust max-width for smaller screens */
+    }
+  }
+  

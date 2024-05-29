@@ -39,7 +39,7 @@ function Landing() {
         Pick The Correct <a className='landingBlur'>Ten ⭐</a>
       </p>
       <div className='buttonContainer'>
-        <a className='playSelection' href='/game'>
+        <a className='playSelection' href='/gamemodes'>
           Play
         </a>
         {!currentUser && (

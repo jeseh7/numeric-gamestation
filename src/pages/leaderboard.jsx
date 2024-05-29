@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import './leaderboard.css'; // Import the CSS file
 import { supabase } from '../supabase'; // Import Supabase client
+import Paginator from '../components/paginator';
 
 const Leaderboard = () => {
     const [leaderboardData, setLeaderboardData] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [mode, setMode] = useState('normal');
+    const itemsPerPage = 10;
 
     useEffect(() => {
         const fetchLeaderboardData = async () => {
             try {
-                // Fetch the top 100 best attempts from the attempts table
+                const tableName = mode === 'normal' ? 'attempts' : 'hardattempts';
                 const { data: attemptsData, error } = await supabase
-                    .from('attempts')
-                    .select('username, attempts') // Correct column name
-                    .order('attempts', { ascending: true }) // Order by attempts in ascending order
-                    .range(0, 99); // Get the top 100 attempts
+                    .from(tableName)
+                    .select('username, attempts')
+                    .order('attempts', { ascending: true });
 
                 if (error) {
                     throw error;
                 }
 
-                // For each attempt, extract the first number from the attempts column
                 const leaderboard = await Promise.all(attemptsData.map(async (attempt) => {
-                    const firstNumber = JSON.parse(attempt.attempts)[0]; // Assuming attempts is an array
+                    const firstNumber = JSON.parse(attempt.attempts)[0];
                     const { data: userData, error: userError } = await supabase
                         .from('user_profiles')
                         .select('username')
-                        .eq('email', attempt.username) // Assuming 'username' in attempts table corresponds to 'email' in user_profiles table
+                        .eq('email', attempt.username)
                         .single();
 
                     if (userError) {
@@ -34,11 +36,10 @@ const Leaderboard = () => {
 
                     return {
                         username: userData.username,
-                        attempt: parseInt(firstNumber) // Parse the attempt as a number
+                        attempt: parseInt(firstNumber)
                     };
                 }));
 
-                // Sort the leaderboard by attempts in ascending order
                 leaderboard.sort((a, b) => a.attempt - b.attempt);
 
                 setLeaderboardData(leaderboard);
@@ -48,20 +49,42 @@ const Leaderboard = () => {
         };
 
         fetchLeaderboardData();
-    }, []);
+    }, [mode]);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const handleModeChange = (newMode) => {
+        setMode(newMode);
+        setCurrentPage(1); // Reset to first page on mode change
+    };
+
+    const maxPages = Math.ceil(leaderboardData.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const currentPageData = leaderboardData.slice(startIndex, startIndex + itemsPerPage);
 
     return (
         <div className="leaderboard-container">
             <h2 className="leaderboard-title">Leaderboard</h2>
+            <div className="mode-selector">
+                <button className={mode === 'normal' ? 'active' : ''} onClick={() => handleModeChange('normal')}>Normal</button>
+                <button className={mode === 'hard' ? 'active' : ''} onClick={() => handleModeChange('hard')}>Hard</button>
+            </div>
             <ul className="leaderboard-list">
-                {leaderboardData.map((entry, index) => (
+                {currentPageData.map((entry, index) => (
                     <li key={index} className="leaderboard-item">
-                        <span className="leaderboard-position">{index + 1}.</span>
+                        <span className="leaderboard-position">{startIndex + index + 1}.</span>
                         <span className="leaderboard-username">{entry.username}</span>
                         <span className="leaderboard-attempt">{entry.attempt} attempts</span>
                     </li>
                 ))}
             </ul>
+            <Paginator
+                currentPage={currentPage}
+                maxPages={maxPages}
+                onPageChange={handlePageChange}
+            />
             <div className="home-button-container">
                 <a className='gameButton2' href='/'>Home</a>
             </div>
