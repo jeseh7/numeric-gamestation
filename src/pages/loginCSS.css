@@ -1,32 +1,54 @@
+:root {
+  --white-pg-bg: rgba(247, 247, 247, 0.685);
+  --input-bg2: rgba(218, 218, 218, 0.473);
+  --l-button-color2: #646464;
+  --switch-btn2: rgba(0, 0, 0, 0.483);
+  --landing-white-pg-bg: rgb(255, 255, 255);
+  --input-focus-border: #9b9b9b; /* Focus border color for light mode */
+  --input-focus-shadow: rgba(85, 85, 85, 0.555); /* Focus shadow color for light mode */
+  --boxshadow-login: #bdbdbd;
+  --input-bg: #2c2c2c;
+  --input-bg-color: #dfdfdfc9;
+}
+
+/* Dark mode variables */
+.dark {
+  --white-pg-bg: #272727b0;
+  --input-bg2: rgba(218, 218, 218, 0.473);
+  --l-button-color2: #D8D8D8;
+  --switch-btn2: #D8D8D8;
+  --landing-white-pg-bg: #272727;
+  --input-focus-border: #d8d8d8; /* Focus border color for dark mode */
+  --input-focus-shadow: rgba(255, 255, 255, 0.555); /* Focus shadow color for dark mode */
+  --boxshadow-login: #636363;
+  --input-bg: #e0e0e0;
+  --input-bg-color: #2c2c2c;
+}
+
+.loginSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--landing-white-pg-bg); /* Change this to your desired background color */
+}
+
 .loginPage {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 40px 30px 30px 30px;
   border-radius: 10px;
-  background-color: white;
+  background-color: var(--white-pg-bg);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   transition: transform 300ms, box-shadow 300ms;
-  box-shadow: 5px 10px 10px rgb(152, 152, 152);
+  box-shadow: 0px 0px 4px 4px var(--boxshadow-login);
   width: 90%; /* Adjust width */
   max-width: 400px; /* Add max-width */
   overflow: hidden;
-}
-
-.loginPage::before,
-.loginPage::after {
-  content: '';
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  border-top-left-radius: 40%;
-  border-top-right-radius: 45%;
-  border-bottom-left-radius: 35%;
-  border-bottom-right-radius: 40%;
-  z-index: -1;
 }
 
 .loginPage::before {
@@ -44,147 +66,61 @@
 }
 
 .input {
+  color: var(--input-bg);
   font-family: 'Asap', sans-serif;
   display: block;
   border-radius: 5px;
   font-size: 16px;
-  background: rgba(255, 255, 255, 0.452);
+  background: var(--input-bg-color);
   width: 100%;
   border: 0;
   padding: 10px 10px;
   margin: 15px -10px;
 }
 
+.input:focus {
+  border-color: var(--input-focus-border); /* Change this to your desired border color when focused */
+  outline: none;
+  box-shadow: 0 0 5px var(--input-focus-shadow); /* Optional: add a box-shadow for a glowing effect */
+}
+
 .loginPageButton {
   font-family: 'Asap', sans-serif;
   cursor: pointer;
-  color: #ffffff;
-  font-size: 16px;
-  width: 100%; /* Adjust width */
+  color: var(--l-button-color2);
+  font-size: 18px;
+  width: 80px;
   border: 0;
-  padding: 10px 0;
+  padding: 10px 10px;
+  padding-right: 0px;
   margin-top: 10px;
-  margin-left: -5px;
+  margin-left: 15%;
   border-radius: 5px;
-  background-color: #d8d8d897;
+  background-color: #FFE0AC;
   transition: background-color 300ms;
+  text-decoration: none;
+  opacity: 80%;
+  background-color: #6e6e6e50;
 }
-
-@media (min-width: 768px) {
-  .loginPage {
-      width: 400px; /* Adjust width for larger screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .loginPage {
-      padding: 20px; /* Adjust padding for smaller screens */
-  }
-  .loginPage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 30px 30px 30px;
-  border-radius: 10px;
-  background-color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: transform 300ms, box-shadow 300ms;
-  box-shadow: 5px 10px 10px rgb(152, 152, 152);
-  width: 90%; /* Adjust width */
-  max-width: 400px; /* Add max-width */
-  overflow: hidden;
-}
-
-.loginPage::before,
-.loginPage::after {
-  content: '';
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  border-top-left-radius: 40%;
-  border-top-right-radius: 45%;
-  border-bottom-left-radius: 35%;
-  border-bottom-right-radius: 40%;
-  z-index: -1;
-}
-
-.loginPage::before {
-  left: 40%;
-  bottom: -110%;
-  background-color: #d9a97850;
-  animation: waves 6s infinite linear;
-}
-
-.loginPage::after {
-  left: 35%;
-  bottom: -105%;
-  background-color: #d9a97850;
-  animation: waves 7s infinite;
-}
-}
-
-  
-  .loginPage > input {
-    font-family: var(--font-asap);
-    display: block;
-    border-radius: 5px;
-    font-size: 16px;
-    background: white;
-    width: 100%;
-    border: 0;
-    padding: 10px 10px;
-    margin: 15px -10px;
-  }
-  
-  .loginPage > .loginPageButton {
-    font-family: var(--font-asap);
-    cursor: pointer;
-    color: #fff;
-    font-size: 16px;
-    text-transform: uppercase;
-    width: 80px;
-    border: 0;
-    padding: 10px 0;
-    margin-top: 10px;
-    margin-left: -5px;
-    border-radius: 5px;
-    background-color: var(--red-fire);
-    transition: background-color 300ms;
-  }
-  
-  .loginPage > .loginPageButton:hover {
-    background-color: rgb(204, 80, 81);
-  }
-  
-  @keyframes waves {
-    from {
-      transform: rotate(0);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  .switchButton {
-    text-decoration: none;
-    color: rgba(0, 0, 0, 0.483);
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    font-size: 12px;
-    cursor: pointer;
-  }
-  
 
 .loginPageButton:hover {
-    background-color: #d8d8d850; /* Darken redFire color */
+  background-color: #c9c9c988; /* Darken color */
+}
+
+.switchButton {
+  text-decoration: none;
+  color: var(--switch-btn2);
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+  background-color: #d8d8d800;
 }
 
 .fieldset {
-    border: none;
+  border: none;
 }
 
 /* Custom Alert Box Styles */
@@ -229,4 +165,16 @@
 .close-btn:hover {
   color: #000;
   opacity: 0.75;
+}
+
+@media (min-width: 768px) {
+  .loginPage {
+    width: 400px; /* Adjust width for larger screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .loginPage {
+    padding: 20px; /* Adjust padding for smaller screens */
+  }
 }

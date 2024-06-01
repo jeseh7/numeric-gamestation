@@ -1,62 +1,80 @@
-/* Add the necessary CSS for the Paginator component */
+/* paginator.css */
+
+:root {
+  --background-color: #f0f0f0;
+  --primary-color: #ffffff;
+  --secondary-color: #000000;
+  --text-color: #000000;
+  --border-color: #ccc;
+  --button-hover-bg: rgba(192, 192, 192, 0.5);
+  --button-hover-color: #625772;
+  --box-shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode {
+  --background-color: #2c2c2c;
+  --primary-color: #333333;
+  --secondary-color: #ffffff;
+  --text-color: #f0f0f0;
+  --border-color: #555555;
+  --button-hover-bg: rgba(100, 100, 100, 0.5);
+  --button-hover-color: #eeeeee;
+  --box-shadow-color: rgba(255, 255, 255, 0.2);
+}
+
+.paginator-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
 
 .page-changer-container, .page-selector-container {
-    cursor: pointer;
-  }
-  
-  .page-changer-container {
-    display: inline-block;
-    svg {
-      position: relative;
-      top: 6px;
-      fill: #000000;
-    }
-  }
-  .page-changer-container:hover {
-    display: inline-block;
-    svg {
-      position: relative;
-      top: 6px;
-      fill: #727272;
-    }
-  }
-  
-  .page-selector-container {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    margin: 0 5px;
-    border: 1px solid #000000;
-    border-radius: 30%;
-    color: #ffffff;
-    transition: all 0.5s ease;
-  }
-  
-  .page-selector-container:hover {
-    background-color: rgba(192, 192, 192, 0.5);
-  }
-  
-  .selected {
-    background-color: #ffffff;
-    color: black;
-  }
-  
-  .minimized {
-    width: 0;
-    height: 0;
-    color: rgba(243, 129, 129, 0);
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  .paginator-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
+  cursor: pointer;
+}
+
+.page-changer-container {
+  display: inline-block;
+}
+
+.page-changer-container svg {
+  position: relative;
+  top: 6px;
+  fill: var(--secondary-color);
+}
+
+.page-changer-container:hover svg {
+  fill: var(--button-hover-color);
+}
+
+.page-selector-container {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 5px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 30%;
+  color: var(--text-color);
+  transition: all 0.5s ease;
+}
+
+.page-selector-container:hover {
+  background-color: var(--button-hover-bg);
+}
+
+.selected {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.minimized {
+  width: 0;
+  height: 0;
+  color: rgba(243, 129, 129, 0);
+}
+
+.hidden {
+  display: none;
+}

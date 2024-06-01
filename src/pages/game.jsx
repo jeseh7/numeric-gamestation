@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { auth } from '../firebase';
 import { supabase } from '../supabase';
 import './game.css'; // Import the CSS file
+import { useTheme } from '../ThemeContext'; // Import the useTheme hook
 
 const generateDailyNumber = () => {
   let number = '';
@@ -12,6 +13,7 @@ const generateDailyNumber = () => {
 };
 
 const Game = () => {
+  const { theme } = useTheme(); // Access the theme context
   const [dailyNumber, setDailyNumber] = useState(generateDailyNumber());
   const [currentGuess, setCurrentGuess] = useState(new Array(10).fill('_'));
   const [guess, setGuess] = useState('');
@@ -87,7 +89,10 @@ const Game = () => {
 
     setGuess('');
   };
-
+  const handleNavigation = (url) => {
+    window.location.href = url;
+  };
+  
   const handleReplay = () => {
     setDailyNumber(generateDailyNumber());
     setCurrentGuess(new Array(10).fill('_'));
@@ -148,7 +153,7 @@ const Game = () => {
   }, []);
 
   return (
-    <section className='gameSection'>
+    <section className={`gameSection ${theme}`}>
       <h2 className='gameTitle'>NUMERICAL GAME</h2>
       <div id="game-board">
         {currentGuess.map((digit, index) => (
@@ -171,10 +176,9 @@ const Game = () => {
       <p id="feedback">{feedback}</p>
       <p id="attempts">Attempts: {attempts}</p>
       {bestAttempt !== null && <p className="best-attempt">Best Attempt: {bestAttempt}</p>}
-      <a className='gameButton' href='/'>Home</a>
+      <button className='gameButton' onClick={() => handleNavigation('/')}>Home</button>
     </section>
   );
 };
 
 export default Game;
-

@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './leaderboard.css'; // Import the CSS file
 import { supabase } from '../supabase'; // Import Supabase client
 import Paginator from '../components/paginator';
+import { useTheme } from '../ThemeContext'; // Import the useTheme hook
 
 const Leaderboard = () => {
     const [leaderboardData, setLeaderboardData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [mode, setMode] = useState('normal');
     const itemsPerPage = 10;
+    const { theme } = useTheme(); // Access the theme context
 
     useEffect(() => {
         const fetchLeaderboardData = async () => {
@@ -64,31 +66,37 @@ const Leaderboard = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const currentPageData = leaderboardData.slice(startIndex, startIndex + itemsPerPage);
 
+    const handleNavigation = (url) => {
+        window.location.href = url;
+    };
+
     return (
-        <div className="leaderboard-container">
-            <h2 className="leaderboard-title">Leaderboard</h2>
-            <div className="mode-selector">
-                <button className={mode === 'normal' ? 'active' : ''} onClick={() => handleModeChange('normal')}>Normal</button>
-                <button className={mode === 'hard' ? 'active' : ''} onClick={() => handleModeChange('hard')}>Hard</button>
+        <section className={`leaderboardSection ${theme}`}>
+            <div className="leaderboard-container">
+                <h2 className="leaderboard-title">Leaderboard</h2>
+                <div className="mode-selector">
+                    <button className={mode === 'normal' ? 'active' : ''} onClick={() => handleModeChange('normal')}>Normal</button>
+                    <button className={mode === 'hard' ? 'active' : ''} onClick={() => handleModeChange('hard')}>Hard</button>
+                </div>
+                <ul className="leaderboard-list">
+                    {currentPageData.map((entry, index) => (
+                        <li key={index} className="leaderboard-item">
+                            <span className="leaderboard-position">{startIndex + index + 1}.</span>
+                            <span className="leaderboard-username">{entry.username}</span>
+                            <span className="leaderboard-attempt">{entry.attempt} attempts</span>
+                        </li>
+                    ))}
+                </ul>
+                <Paginator
+                    currentPage={currentPage}
+                    maxPages={maxPages}
+                    onPageChange={handlePageChange}
+                />
+                <div className="home-button-container">
+                    <button className='gameButton' onClick={() => handleNavigation('/')}>Home</button>
+                </div>
             </div>
-            <ul className="leaderboard-list">
-                {currentPageData.map((entry, index) => (
-                    <li key={index} className="leaderboard-item">
-                        <span className="leaderboard-position">{startIndex + index + 1}.</span>
-                        <span className="leaderboard-username">{entry.username}</span>
-                        <span className="leaderboard-attempt">{entry.attempt} attempts</span>
-                    </li>
-                ))}
-            </ul>
-            <Paginator
-                currentPage={currentPage}
-                maxPages={maxPages}
-                onPageChange={handlePageChange}
-            />
-            <div className="home-button-container">
-                <a className='gameButton2' href='/'>Home</a>
-            </div>
-        </div>
+        </section>
     );
 };
 

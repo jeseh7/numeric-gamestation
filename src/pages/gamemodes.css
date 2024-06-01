@@ -1,69 +1,94 @@
+/* gamemodes.css */
+
+:root {
+  --background-color: #ffffff;
+  --primary-color: #ffffff;
+  --secondary-color: #000000;
+  --text-color: #000000;
+  --border-color: #ccc;
+  --card-hover-bg: rgba(192, 192, 192, 0.5);
+  --card-hover-color: #625772;
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
+  --box-shadow-hover-color: rgba(0, 0, 0, 0.2);
+  --desc-text: #666;
+}
+
+.dark {
+  --background-color: #272727;
+  --primary-color: #333333;
+  --secondary-color: #ffffff;
+  --text-color: #f0f0f0;
+  --border-color: #555555;
+  --card-hover-bg: rgba(100, 100, 100, 0.5);
+  --card-hover-color: #eeeeee;
+  --box-shadow-color: rgba(255, 255, 255, 0.1);
+  --box-shadow-hover-color: rgba(255, 255, 255, 0.2);
+  --desc-text: #b8b8b8;
+}
+
 .gamemodeBody {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: 100vh;
-  }
-  
-  .gamemodeSection {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-  }
-  
-  .gamemodeCardSection {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .gamemodeCard, .gamemodeCard2 {
-    opacity: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 14px 18px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 10px;
-    width: 300px;
-    height: 200px;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .gamemodeCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 18px 26px rgba(0, 0, 0, 0.2);
-  }
-  .gamemodeCard2:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 18px 26px rgba(0, 0, 0, 0.2);
-  }
-  
-  .gamemodeTitle {
-    opacity: 100%;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #000000;
-  }
-  .gamemodeTitle2 {
-    opacity: 100%;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #791313;
-  }
-  
-  .gamemodeDesc {
-    opacity: 100%;
-    font-size: 1em;
-    color: #666;
-    text-align: center;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--background-color);
+}
+
+.gamemodeSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  border: none;
+}
+
+.gamemodeCardSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: none;
+}
+
+.gamemodeCard, .gamemodeCard2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0px 0px 14px 10px var(--box-shadow-color);
+  padding: 20px;
+  margin: 10px;
+  width: 300px;
+  height: 200px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gamemodeCard:hover, .gamemodeCard2:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 0px 14px 10px var(--box-shadow-hover-color);
+}
+
+.gamemodeTitle {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--secondary-color);
+}
+
+.gamemodeTitle2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #791313; /* Specific color for the hard mode */
+}
+
+.gamemodeDesc {
+  font-size: 1em;
+  color: var(--desc-text);
+  text-align: center;
+}

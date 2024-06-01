@@ -4,7 +4,7 @@ import './index.css';
 import Landing from './Landing';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Login } from './pages/loginPage';
+import Login from './pages/loginPage';
 import Game from './pages/game';
 import { onAuthStateChanged } from 'firebase/auth';
 import { ProtectedRoute } from './components/protectedRoute';
@@ -14,6 +14,8 @@ import Leaderboard from './pages/leaderboard';
 import loadingGif from './img/loading.gif';
 import Gamemodes from './pages/gamemodes';
 import Hardgame from './pages/hardgame';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { ThemeProvider } from './ThemeContext';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -37,26 +39,27 @@ const App = () => {
 
   if (isFetching) {
     return (
-      <div className="loading-container">
+      <div className="loading-container" >
         <img src={loadingGif} alt="Loading..." className="loading-gif" />
       </div>
     );
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Landing user={user} />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
-        <Route path="/game" element={<ProtectedRoute user={user}><Game /></ProtectedRoute>} />
-        <Route path="/hardgame" element={<ProtectedRoute user={user}><Hardgame /></ProtectedRoute>} />
-        <Route path="/gamemodes" element={<ProtectedRoute user={user}><Gamemodes /></ProtectedRoute>} />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Landing user={user} />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/game" element={<ProtectedRoute user={user}><Game /></ProtectedRoute>} />
+          <Route path="/hardgame" element={<ProtectedRoute user={user}><Hardgame /></ProtectedRoute>} />
+          <Route path="/gamemodes" element={<ProtectedRoute user={user}><Gamemodes /></ProtectedRoute>} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 };
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -66,6 +69,6 @@ root.render(
 );
 
 // If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals.console.log))
+// to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

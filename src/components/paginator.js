@@ -1,5 +1,6 @@
 import React from 'react';
 import './paginator.css';
+import { useTheme } from '../'; // Import the useTheme hook
 
 class PageSelector extends React.Component {
   render() {

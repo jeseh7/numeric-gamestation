@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { auth } from '../firebase';
 import { supabase } from '../supabase';
 import './hardgame.css'; // Import the CSS file
+import { useTheme } from '../ThemeContext'; // Import the useTheme hook
+
 
 const generateDailyNumber = () => {
   let number = '';
@@ -20,6 +22,7 @@ const Hardgame = () => {
   const [bestAttempt, setBestAttempt] = useState(null);
   const [isGameComplete, setIsGameComplete] = useState(false);
   const [username, setUsername] = useState('');
+  const { theme } = useTheme(); // Access the theme context
 
   const inputRef = useRef(null); // Create a ref for the input element
 
@@ -162,18 +165,21 @@ const Hardgame = () => {
       document.removeEventListener('keypress', handleKeyPress);
     };
   }, []);
-
+  const handleNavigation = (url) => {
+    window.location.href = url;
+  };
+  
   return (
-    <section className='gameSection2'>
+    <section className={`gameSection ${theme}`}>
       <h2 className='gameTitle2'>HARD NUMERICAL GAME</h2>
-      <div id="game-board2">
+      <div id="game-board">
         {currentGuess.map((digit, index) => (
-          <span key={index} id={`digit-${index}`} className="digit2">{digit}</span>
+          <span key={index} id={`digit-${index}`} className="digit">{digit}</span>
         ))}
       </div>
       <input
         ref={inputRef}
-        className='gameInput2'
+        className='gameInput'
         type="text"
         value={guess}
         onChange={handleInputChange}
@@ -182,12 +188,12 @@ const Hardgame = () => {
         disabled={isGameComplete} // Disable input when the game is complete
         pattern="[0-9]*" // Allow only numeric input
       />
-      <button className='gameButton2' onClick={submitGuess} disabled={isGameComplete}>Submit Guess</button>
-      {isGameComplete && <button className='gameButton2' onClick={handleReplay}>Replay</button>}
+      <button className='gameButton' onClick={submitGuess} disabled={isGameComplete}>Submit Guess</button>
+      {isGameComplete && <button className='gameButton' onClick={handleReplay}>Replay</button>}
       <p id="feedback">{feedback}</p>
       <p id="attempts">Attempts: {attempts}</p>
-      {bestAttempt !== null && <p className="best-attempt2">Best Attempt: {bestAttempt}</p>}
-      <a className='gameButton' href='/'>Home</a>
+      {bestAttempt !== null && <p className="best-attempt">Best Attempt: {bestAttempt}</p>}
+      <button className='gameButton' onClick={() => handleNavigation('/')}>Home</button>
     </section>
   );
 };

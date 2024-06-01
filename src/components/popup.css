@@ -9,21 +9,10 @@
     width: 400px;
     transform: translate(-50%, -50%);
     transition: transform 300ms, box-shadow 300ms;
-    box-shadow: 5px 10px 10px rgb(152, 152, 152);
+    box-shadow: 8px 8px 8px #bdbdbd;
   }
   
-  .loginPage2::before,
-  .loginPage2::after {
-    content: '';
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-top-left-radius: 40%;
-    border-top-right-radius: 45%;
-    border-bottom-left-radius: 35%;
-    border-bottom-right-radius: 40%;
-    z-index: -1;
-  }
+ 
   
   .loginPage2::before {
     left: 50%;

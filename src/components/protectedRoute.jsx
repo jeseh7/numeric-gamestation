@@ -7,6 +7,10 @@ export const ProtectedRoute = ({ children, user }) => {
       alert("Please log in to access this page.");
     }
   };
+  const handleNavigation = (url) => {
+    window.location.href = url;
+  };
+  
 
   return user ? (
     children
@@ -15,7 +19,7 @@ export const ProtectedRoute = ({ children, user }) => {
             <form className="loginPage2">
                 <fieldset className="fieldset2">
                      <p className="input2" >Please login to an account to be able to play</p>
-                     <a href="/login" type="button" className="loginPageButton2" >Log In</a>
+                     <button type="button" className="loginPageButton2" onClick={() => handleNavigation('/login')}>Log In</button>
                 </fieldset>
             </form>
         </section>

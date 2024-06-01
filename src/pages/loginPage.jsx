@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import { supabase } from '../supabase'; // Import your Supabase instance
 import './loginCSS.css';
+import { ThemeProvider, useTheme } from '../ThemeContext';
 
 export const Login = ({ user }) => {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ export const Login = ({ user }) => {
   const [isSignUpActive, setIsSignUpActive] = useState(true);
   const [alertMessage, setAlertMessage] = useState('');
   const [alertType, setAlertType] = useState('');
+  const { theme } = useTheme(); // Access the theme context
 
   const handleMethodChange = () => {
     setIsSignUpActive(!isSignUpActive);
@@ -34,7 +36,7 @@ export const Login = ({ user }) => {
       }
 
       console.log('User signed up successfully:', firebaseUser);
-      navigate('/gamemodes');
+      navigate('/');
     } catch (error) {
       showAlert('Error signing up: ' + error.message, 'danger');
       console.error('Error signing up:', error.message);
@@ -48,7 +50,7 @@ export const Login = ({ user }) => {
       const { user: firebaseUser } = await signInWithEmailAndPassword(auth, email, password);
 
       console.log('User signed in successfully:', firebaseUser);
-      navigate('/gamemodes');
+      navigate('/');
     } catch (error) {
       showAlert('Password Incorrect or No Account', 'danger');
       console.error('Error signing in:', error.message);
@@ -80,7 +82,7 @@ export const Login = ({ user }) => {
   }
 
   return (
-    <section>
+    <section className={`loginSection ${theme}`}>
       <form className="loginPage" onKeyPress={handleKeyPress}>
         <fieldset className="fieldset">
           {!isSignUpActive && (
@@ -117,14 +119,14 @@ export const Login = ({ user }) => {
             </button>
           )}
           {!isSignUpActive && (
-            <a className="switchButton" onClick={handleMethodChange}>
+            <button className="switchButton" onClick={handleMethodChange}>
               Login
-            </a>
+            </button>
           )}
           {isSignUpActive && (
-            <a className="switchButton" onClick={handleMethodChange}>
+            <button className="switchButton" onClick={handleMethodChange}>
               Create An Account
-            </a>
+            </button>
           )}
         </fieldset>
         {alertMessage && (
@@ -137,3 +139,5 @@ export const Login = ({ user }) => {
     </section>
   );
 };
+
+export default Login;
