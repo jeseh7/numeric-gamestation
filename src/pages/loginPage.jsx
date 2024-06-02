@@ -2,9 +2,20 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
-import { supabase } from '../supabase'; // Import your Supabase instance
+import { supabase } from '../supabase';
 import './loginCSS.css';
 import { ThemeProvider, useTheme } from '../ThemeContext';
+
+
+const profaneWords = [
+  'ass', 'asshole', 'bastard', 'bitch', 'bloody', 'bollocks', 'bugger', 'bullshit',
+  'chink', 'cock', 'crap', 'cunt', 'damn', 'dick', 'douche', 'fag', 'faggot', 'fuck',
+  'goddamn', 'hell', 'homo', 'jerk', 'kike', 'motherfucker', 'nigger', 'piss', 'prick',
+  'pussy', 'shit', 'slut', 'spic', 'twat', 'wanker', 'whore'
+]; // List of profane words here from "ChatGPT" NOT ME I SWEAR
+
+// Create a regular expression for the profane words
+const profaneWordsRegex = new RegExp(profaneWords.join('|'), 'i');
 
 export const Login = ({ user }) => {
   const navigate = useNavigate();
@@ -14,19 +25,45 @@ export const Login = ({ user }) => {
   const [isSignUpActive, setIsSignUpActive] = useState(true);
   const [alertMessage, setAlertMessage] = useState('');
   const [alertType, setAlertType] = useState('');
-  const { theme } = useTheme(); // Access the theme context
+  const { theme } = useTheme();
 
   const handleMethodChange = () => {
     setIsSignUpActive(!isSignUpActive);
   };
 
+  const containsProfanity = (text) => {
+    return profaneWordsRegex.test(text);
+  };
+
+  const validateUsername = (username) => {
+    if (username.length > 10) {
+      showAlert('Username must be 10 characters or less', 'danger');
+      return false;
+    }
+    if (containsProfanity(username)) {
+      showAlert('Username contains inappropriate words', 'danger');
+      return false;
+    }
+    return true;
+  };
+
+  const validatePassword = (password) => {
+    const hasNumber = /\d/;
+    if (password.length < 6 || !hasNumber.test(password)) {
+      showAlert('Password must be at least 6 characters and contain a number', 'danger');
+      return false;
+    }
+    return true;
+  };
+
   const handleSignUp = async () => {
     if (!email || !password || !username) return;
+
+    if (!validateUsername(username) || !validatePassword(password)) return;
 
     try {
       const { user: firebaseUser } = await createUserWithEmailAndPassword(auth, email, password);
 
-      // Store username in Supabase
       const { data, error: profileError } = await supabase
         .from('user_profiles')
         .insert([{ email, username, firebase_uid: firebaseUser.uid }]);
@@ -45,6 +82,8 @@ export const Login = ({ user }) => {
 
   const handleSignIn = async () => {
     if (!email || !password) return;
+
+    if (!validatePassword(password)) return;
 
     try {
       const { user: firebaseUser } = await signInWithEmailAndPassword(auth, email, password);

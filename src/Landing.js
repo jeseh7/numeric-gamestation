@@ -71,7 +71,7 @@ function Landing() {
       )}
 
 
-      <video className="App-video" id='numeric' muted playsInline autoPlay loop style={{ filter: theme === 'dark' ? 'invert(85%)' : 'none' }}>
+      <video className="App-video" id='numeric' muted playsInline autoPlay loop style={{ filter: theme === 'dark' ? 'invert(84.5%)' : 'none' }}>
           <source src={numerical} type="video/mp4" />
           <source src={numericalWebm} type="video/webm" />
           Your browser does not support the video tag.
