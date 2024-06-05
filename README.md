@@ -75,10 +75,9 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 
 ### Author:
 
-[Your Name]
+Numeric Game Devs
 
 ### Contact:
 
-For inquiries or support, please contact [your email address].
 
 Enjoy playing the Numerical Game App! Let's see who can achieve the best scores on the leaderboards! 🎮🏆
