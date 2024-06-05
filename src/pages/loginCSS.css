@@ -25,12 +25,41 @@
   --input-bg-color: #2c2c2c;
 }
 
+.googleSignInButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4285F4;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  width: 100%; /* Set width to 100% */
+}
+
+.googleSignInButton:hover {
+  background-color: #357AE8;
+}
+
+.googleSignInButton svg {
+  margin-right: 8px;
+}
+
+.googleSignInButton span {
+  display: inline-block;
+  font-size: 14px;
+}
+
 .loginSection {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: var(--landing-white-pg-bg); /* Change this to your desired background color */
+  background-color: var(--landing-white-pg-bg);
 }
 
 .loginPage {
@@ -46,10 +75,12 @@
   transform: translate(-50%, -50%);
   transition: transform 300ms, box-shadow 300ms;
   box-shadow: 0px 0px 4px 4px var(--boxshadow-login);
-  width: 90%; /* Adjust width */
-  max-width: 400px; /* Add max-width */
+  width: 90%;
+  max-width: 400px;
   overflow: hidden;
 }
+
+
 
 .loginPage::before {
   left: 40%;
@@ -72,39 +103,38 @@
   border-radius: 5px;
   font-size: 16px;
   background: var(--input-bg-color);
-  width: 100%;
+  width: 100%; /* Set width to 100% */
   border: 0;
-  padding: 10px 10px;
-  margin: 15px -10px;
+  padding: 10px;
+  margin: 15px 0; /* Adjust margin to line up with other elements */
 }
 
 .input:focus {
-  border-color: var(--input-focus-border); /* Change this to your desired border color when focused */
+  border-color: var(--input-focus-border);
   outline: none;
-  box-shadow: 0 0 5px var(--input-focus-shadow); /* Optional: add a box-shadow for a glowing effect */
+  box-shadow: 0 0 5px var(--input-focus-shadow);
 }
 
 .loginPageButton {
   font-family: 'Asap', sans-serif;
+  flex: content;
+  align-items: center;
   cursor: pointer;
   color: var(--l-button-color2);
   font-size: 18px;
-  width: 80px;
+  width: 20%; /* Adjust width as needed */
   border: 0;
-  padding: 10px 10px;
-  padding-right: 0px;
-  margin-top: 10px;
-  margin-left: 15%;
+  padding: 10px;
+  margin: 10px auto; /* Center the button horizontally */
   border-radius: 5px;
-  background-color: #FFE0AC;
-  transition: background-color 300ms;
-  text-decoration: none;
-  opacity: 80%;
   background-color: #6e6e6e50;
+  transition: background-color 300ms;
+  opacity: 80%;
 }
 
+
 .loginPageButton:hover {
-  background-color: #c9c9c988; /* Darken color */
+  background-color: #c9c9c988;
 }
 
 .switchButton {
@@ -121,13 +151,14 @@
 
 .fieldset {
   border: none;
+  width: 100%;
 }
 
 /* Custom Alert Box Styles */
 .alert {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* To place the close button at the end */
+  justify-content: space-between;
   padding: 15px;
   margin-bottom: 20px;
   border-radius: 4px;
@@ -169,12 +200,12 @@
 
 @media (min-width: 768px) {
   .loginPage {
-    width: 400px; /* Adjust width for larger screens */
+    width: 400px;
   }
 }
 
 @media (max-width: 480px) {
   .loginPage {
-    padding: 20px; /* Adjust padding for smaller screens */
+    padding: 20px;
   }
 }
